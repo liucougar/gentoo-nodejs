@@ -1,1 +1,2 @@
-This overlay is not maintained anymore.
+I might maintain this overlay, I might not. You just don't know. </geordie>
+layman -f -o http://github.com/downloads/randomblast/gentoo-nodejs/nodejs-layman.xml -a nodejs
