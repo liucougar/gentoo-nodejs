@@ -19,7 +19,8 @@ IUSE="ssl"
 
 RDEPEND="ssl? ( dev-libs/openssl )
 	>=sys-devel/gcc-4
-	>=dev-lang/python-2.6"
+	>=dev-lang/python-2.6
+	>=net-dns/c-ares-1.7.3"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/node-v${PV}"
@@ -36,6 +37,28 @@ src_configure() {
 	if ! use ssl; then
 		my_conf=" --disable-ssl"
 	fi
+	my_conf="${my_conf} --shared-cares"
+#  opt.add_option('--shared-cares'
+#                , action='store_true'
+#                , default=False
+#                , help='Link to a shared C-Ares DLL instead of static linking'
+#                , dest='shared_cares'
+#                )
+#
+#  opt.add_option( '--shared-cares-includes'
+#                , action='store'
+#                , default=False
+#                , help='Directory containing C-Ares header files'
+#                , dest='shared_cares_includes'
+#                )
+#
+#  opt.add_option( '--shared-cares-libpath'
+#                , action='store'
+#                , default=False
+#                , help='A directory to search for the shared C-Ares DLL'
+#                , dest='shared_cares_libpath'
+#                )
+
 	./configure \
 		--prefix=/usr \
 		${my_conf} || die "Configure failed!"
