@@ -1,0 +1,11 @@
+--- bin/expresso.orig	2010-11-21 17:57:44.000000000 +0100
++++ bin/expresso	2010-11-21 17:58:03.000000000 +0100
+@@ -165,7 +165,7 @@
+         case '--cov':
+         case '--coverage':
+             defer = true;
+-            childProcess.exec('rm -fr lib-cov && node-jscoverage lib lib-cov', function(err){
++            childProcess.exec('rm -fr lib-cov && jscoverage lib lib-cov', function(err){
+                 if (err) throw err;
+                 require.paths.unshift('lib-cov');
+                 run(files);
