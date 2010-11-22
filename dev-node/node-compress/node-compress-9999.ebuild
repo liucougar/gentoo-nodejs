@@ -4,7 +4,7 @@
 
 EAPI=2
 
-inherit git
+inherit git multilib
 
 DESCRIPTION="A streaming compression / gzip library for node.js"
 HOMEPAGE="http://github.com/waveto/node-compress"
