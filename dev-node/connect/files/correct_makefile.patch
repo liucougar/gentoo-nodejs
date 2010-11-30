@@ -1,0 +1,37 @@
+--- Makefile.orig	2010-11-30 00:10:07.000000000 +0100
++++ Makefile	2010-11-30 00:10:22.000000000 +0100
+@@ -1,9 +1,9 @@
+ 
+ NODE = node
+-TEST = support/expresso/bin/expresso
++TEST ?= /usr/bin/expresso
+ TESTS ?= test/*.test.js
+-PREFIX = /usr/local
+-LIB_PREFIX = $(HOME)/.node_libraries
++PREFIX ?= /usr/local
++LIB_PREFIX ?= $(HOME)/.node_libraries
+ DOCS = docs/index.md \
+ 	   docs/methodOverride.md \
+ 	   docs/conditionalGet.md \
+--- Makefile.orig	2010-11-30 00:23:25.000000000 +0100
++++ Makefile	2010-11-30 00:23:52.000000000 +0100
+@@ -22,11 +22,8 @@
+ HTMLDOCS = $(DOCS:.md=.html)
+ 
+ test:
+-	@NODE_ENV=test ./$(TEST) \
++	@NODE_ENV=test $(TEST) \
+ 		-I lib \
+-		-I support/coffee-script/lib \
+-		-I support/sass/lib \
+-		-I support/less/lib \
+ 		$(TEST_FLAGS) $(TESTS)
+ 
+ test-cov:
+@@ -83,4 +80,4 @@
+ docclean:
+ 	rm -f docs/*.{1,html}
+ 
+-.PHONY: install uninstall docs test test-cov benchmark graphs install-docs docclean
+\ No newline at end of file
++.PHONY: install uninstall docs test test-cov benchmark graphs install-docs docclean
